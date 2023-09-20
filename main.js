@@ -95,7 +95,43 @@ document.addEventListener("DOMContentLoaded", function(event) {
         activeGainNodes[key] = gainNode
         osc.start();
         gainNode.gain.setTargetAtTime(gainVal, audioCtx.currentTime, 0.01)
+
+        const noteName = getNoteName(key);
+        const noteDisplay = document.getElementById('note-display');
+        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        noteDisplay.textContent = noteName;
+        noteDisplay.style.color = randomColor;
     }
 
+    function getNoteName(key) {
+        const noteNames = {
+            '90': 'C',  //Z - C
+            '83': 'C#',  //S - C#
+            '88': 'D',  //X - D
+            '68': 'D#',  //D - D#
+            '67': 'E',  //C - E
+            '86': 'F',  //V - F
+            '71': 'F#',  //G - F#
+            '66': 'G',  //B - G
+            '72': 'G#',  //H - G#
+            '78': 'A',  //N - A
+            '74': 'A#',  //J - A#
+            '77': 'B',  //M - B
+            '81': 'C',  //Q - C
+            '50': 'C#',  //2 - C#
+            '87': 'D',  //W - D
+            '51': 'D#',  //3 - D#
+            '69': 'E',  //E - E
+            '82': 'F',  //R - F
+            '53': 'F#',  //5 - F#
+            '84': 'G',  //T - G
+            '54': 'G#',  //6 - G#
+            '89': 'A',  //Y - A
+            '55': 'A#',  //7 - A#
+            '85': 'B',  //U - B
+            '73': 'C', //I - C
+        }
+        return noteNames[key];
+    }
 
 });
